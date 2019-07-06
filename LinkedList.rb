@@ -61,8 +61,24 @@ class LinkedList
 		end
 		return curr
 	end
+	def setNode(_index, _value)
+		if _index > -1 and _index < @length
+			_node = getNode(_index).setValue = _value
+		else
+			puts "Index #{_index} out of range"
+			puts "Must be between 0 and #{@length}"
+		end	
+	end
 	def getLength
 		@length
+	end
+	
+	def print
+		curr = @head
+		while curr != nil
+			puts curr.getValue
+			curr = curr.getNext
+		end
 	end
 end
 		
@@ -88,33 +104,25 @@ while curr != nil do
 	curr = curr.getNext
 end
 
+# testing linked list
 puts "Creating linked list using LinkedList class"
-
 testLinkedList = LinkedList.new(Node.new(0))
 i = 1
-
 while i < fin do
 	testLinkedList.addNode(Node.new(i))
 	i += 1
 end
-
 puts "current length is #{testLinkedList.getLength}"
-
 puts "Printing out LinkedList values"
-i = 0
-while i < testLinkedList.getLength do
-	target_node = testLinkedList.getNode(i)
-	puts target_node.getValue
-	i += 1
-end
+testLinkedList.print
 
+# testing removeNode method
 _indexToRemove = 3
 puts "Removing node from index #{_indexToRemove}"
 testLinkedList.removeNode(_indexToRemove)
+testLinkedList.print
 
-i = 0
-while i < testLinkedList.getLength do
-	target_node = testLinkedList.getNode(i)
-	puts target_node.getValue
-	i += 1
-end
+# testing setNode method
+puts "Testing setNode method"
+testLinkedList.setNode(2, -5)
+testLinkedList.print
