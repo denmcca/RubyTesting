@@ -1,21 +1,10 @@
-class Node
-	def initialize(_val)
-		@val = _val
-		@next = nil
-	end
-	def getValue
-		@val
-	end
-	def getNext
-		@next
-	end
-	def setValue=(val)
-		@val = val
-	end
-	def setNext=(_next)
-		@next = _next
-	end
-end
+$LOAD_PATH << '.'
+require 'node.rb'
+
+=begin
+instead of using $LOAD_PATH you can use
+require_relative 'nodes.rb'
+=end
 
 class LinkedList
 	def initialize(_head_node)
@@ -81,48 +70,3 @@ class LinkedList
 		end
 	end
 end
-		
-puts "Creating linkedlist using Nodes only"
-		
-head = Node.new(0)
-curr = head;
-
-i = 1
-fin = 5
-
-while i < fin do
-	curr.setNext = Node.new(i)
-	i += 1
-	curr = curr.getNext
-end
-
-puts "Printing Nodes only linked list"
-curr = head
-
-while curr != nil do
-	puts curr.getValue
-	curr = curr.getNext
-end
-
-# testing linked list
-puts "Creating linked list using LinkedList class"
-testLinkedList = LinkedList.new(Node.new(0))
-i = 1
-while i < fin do
-	testLinkedList.addNode(Node.new(i))
-	i += 1
-end
-puts "current length is #{testLinkedList.getLength}"
-puts "Printing out LinkedList values"
-testLinkedList.print
-
-# testing removeNode method
-_indexToRemove = 3
-puts "Removing node from index #{_indexToRemove}"
-testLinkedList.removeNode(_indexToRemove)
-testLinkedList.print
-
-# testing setNode method
-puts "Testing setNode method"
-testLinkedList.setNode(2, -5)
-testLinkedList.print
