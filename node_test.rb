@@ -3,8 +3,8 @@ require_relative 'node.rb'
 def main
 	puts "Creating linkedlist using Nodes only"
 			
-	head = Node.new(0)
-	curr = head;
+	head = Node.new
+	curr = head
 
 	i = 1
 	fin = 5
@@ -14,14 +14,16 @@ def main
 		i += 1
 		curr = curr.getNext
 	end
-
+	
 	puts "Printing Nodes only linked list"
 	curr = head
 
-	while curr != nil do
+	while not (curr == nil) do
 		puts curr.getValue
 		curr = curr.getNext
 	end
+	
+	puts "message: #{head.getNodeCount} nodes current exist"
 end
 
 main

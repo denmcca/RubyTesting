@@ -24,6 +24,28 @@ def main
 	puts "Testing setNode method"
 	testLinkedList.setNode(2, -5)
 	testLinkedList.print
+	
+	# testing insertNode method
+	puts "Testing insertNode method"
+	testLinkedList.insertNode(1, Node.new(99))
+	testLinkedList.print
+	
+	# testing insertNode edge cases
+	puts "Testing at head of list"
+	testLinkedList.insertNode(0, Node.new(-1))
+	testLinkedList.print
+	
+	puts "Testing at end of list"
+	testLinkedList.insertNode(testLinkedList.getLength, Node.new(88))
+	testLinkedList.print
+	
+	puts "Insert out of range"
+	testLinkedList.insertNode(-1, Node.new(-55))
+	testLinkedList.print
+	testLinkedList.insertNode(testLinkedList.getLength + 1, Node.new(-44))
+	testLinkedList.print
+	
+	puts "End of test"
 end
 
 main

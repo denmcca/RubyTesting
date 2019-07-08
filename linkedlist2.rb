@@ -6,15 +6,29 @@ instead of using $LOAD_PATH you can use
 require_relative 'nodes.rb'
 =end
 
+=begin
+list of methods
+addNode
+removeNode
+getNode
+setNode
+insertNode
+getLength
+print
+sort
+=end
+
 class LinkedList
 	def initialize(_head_node)
 		@head = _head_node
-		@tail = @head
 		@length = 1
 	end
 	def addNode(_node)
-		@tail.setNext = _node
-		@tail = @tail.getNext
+		curr = @head
+		while curr.getNext != nil do
+			curr = curr.getNext
+		end
+		curr.setNext = _node
 		@length += 1
 	end
 	def removeNode(_index)
@@ -37,7 +51,6 @@ class LinkedList
 			curr = curr.getNext
 			i += 1
 		end
-		
 		curr.setNext = curr.getNext.getNext
 		@length -= 1
 	end
@@ -58,6 +71,26 @@ class LinkedList
 			puts "Must be between 0 and #{@length}"
 		end	
 	end
+	def insertNode(_index, _node)
+		if _index < 0 or _index > @length
+			puts "Index #{_index} is out of range"
+			return
+		end
+		if _index == 0
+			_node.setNext = @head
+			@head = _node
+		else
+			i = 1
+			curr = @head
+			while i < _index do 
+				curr = curr.getNext
+				i += 1
+			end
+			_node.setNext = curr.getNext
+			curr.setNext = _node			
+		end
+		@length += 1
+	end
 	def getLength
 		@length
 	end
@@ -68,5 +101,10 @@ class LinkedList
 			puts curr.getValue
 			curr = curr.getNext
 		end
+	end
+	
+	
+	def sort
+		#code
 	end
 end
